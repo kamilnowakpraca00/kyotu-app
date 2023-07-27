@@ -1,0 +1,16 @@
+spring:
+  batch:
+    job:
+      schedule: "0 0/20 * * * ?"
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # For simplicity in this example; consider a more appropriate option for production
+    database-platform: org.hibernate.dialect.H2Dialect
+
+server:
+  port: 8080
