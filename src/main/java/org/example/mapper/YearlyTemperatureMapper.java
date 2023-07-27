@@ -1,12 +1,12 @@
 package org.example.mapper;
 
+import java.util.List;
 import org.example.dto.YearlyTemperatureDto;
 import org.example.dto.YearlyTemperatureResponse;
 import org.example.entity.YearlyTemperature;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface YearlyTemperatureMapper {
@@ -22,9 +22,7 @@ public interface YearlyTemperatureMapper {
     @Mapping(target = "numMeasurements", source = "numMeasurements")
     List<YearlyTemperatureDto> toDtoList(List<YearlyTemperature> yearlyTemperatureList);
 
-    // Mapping method to convert YearlyTemperatureDto to YearlyTemperatureResponse
     YearlyTemperatureResponse toResponse(YearlyTemperatureDto yearlyTemperatureDto);
 
-    // Mapping method to convert YearlyTemperatureResponse to YearlyTemperatureDto
     YearlyTemperatureDto toDto(YearlyTemperature yearlyTemperatureResponse);
 }

@@ -1,12 +1,11 @@
 package org.example.file;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.example.dto.Temperature;
 import org.example.entity.YearlyTemperature;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 public class YearlyTemperatureProcessor implements ItemProcessor<Temperature, YearlyTemperature> {
@@ -28,7 +27,6 @@ public class YearlyTemperatureProcessor implements ItemProcessor<Temperature, Ye
             return yt;
         });
 
-        // Calculate the sum of temperatures and the number of measurements
         double sumTemperature = yearlyTemperature.getSumTemperature() + temperature.getTemperature();
         int numMeasurements = yearlyTemperature.getNumMeasurements() + DAYS_INDEX;
 

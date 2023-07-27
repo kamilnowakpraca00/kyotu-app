@@ -1,9 +1,11 @@
 package org.example.file;
 
+import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.Temperature;
 import org.example.entity.YearlyTemperature;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -13,8 +15,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
-import org.springframework.batch.core.Step;
-import javax.sql.DataSource;
 
 @Configuration
 @EnableBatchProcessing
@@ -48,7 +48,7 @@ public class YearlyTemperatureJobConfig {
             .<Temperature, YearlyTemperature>chunk(10)
             .reader(yearlyTemperatureItemReader)
             .processor(yearlyTemperatureProcessor)
-            .writer(this.yearlyTemperatureItemWriter) // Use the JPA Item Writer
+            .writer(this.yearlyTemperatureItemWriter)
             .build();
     }
 }

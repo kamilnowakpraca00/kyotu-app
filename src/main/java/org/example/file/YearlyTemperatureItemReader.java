@@ -42,7 +42,7 @@ public class YearlyTemperatureItemReader implements ItemReader<Temperature>, Ite
             .resource(inputResource)
             .linesToSkip(1)
             .delimited()
-            .delimiter(DELIMITER) // Set the correct delimiter
+            .delimiter(DELIMITER)
             .names(CITY, DATE_TIME, TEMPERATURE)
             .fieldSetMapper(this::mapToTemperature)
             .build();
